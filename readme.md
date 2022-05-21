@@ -1,26 +1,28 @@
-# Docker container for linux vrising server 
+# Unofficial VRising Docker Container
+This is an unofficial VRising container for running servers on Linux. This is a forked version from the [original](https://github.com/Googlrr/V-Rising-Docker-Linux) to make a little more portable. It uses Wine for running the server, so there is going to be some weird file mapping at play.
 
-using Wine in an ubuntu container
+## Configuration
 
-This isn't really meant to be a guide, just publishing because at the moment not much info on setting this up out there. I'm no docker expert so there's probably a better way to go about this. Sorry if these steps aren't 100% accurate: 
+According to the [official guide](https://github.com/StunlockStudios/vrising-dedicated-server-instructions) there is a default set of configurations, and then an override folder which lives at `/root/.wine/drive_c/users/root/AppData/LocalLow/Stunlock Studios/VRisingServer/Settings/` in this container.
 
-1. Clone the repo
-git clone https://github.com/Googlrr/V-Rising-Docker-Linux
+If you map a local directory (`/vrising/settings` in my examples) to the override directory above, you can put game setting overrides in there which are applied every time the container is restarted.
 
-2. CD to the directory
-cd V-Rising-Docker-Linux
+Check out `./default/` in this repo for examples of full config files, or check out `./settings/` for a smaller set that I use. You'll want to make sure these exist in `/vrising/settings` or wherever you put your game configs.
 
-3. Modify the ServerGameSettings.json and ServerHostSettings.json for whatever you want. 
 
-4. Move all the files in /settings/ to some location.
+## Deployment w/ docker-compose
+This is a quick deployment meant to get you up and running with minimal BS:
 
-4. Build the image
-sudo docker build . -t vrising:latest
-
-5. Modify docker compose, set a path for where you want your saves. Set the save and settings directories
-
-6. compose
-sudo docker-compose up -d 
-
-Really messy setup but this was the only way I could figure out how to work it lol. Never used Wine before. Hope for a native linux server soon! 
+1. Create your host's game settings folder:
+    ```
+    export SETTINGS=/vrising/settings
+    mkdir $SETTINGS
+    ```
+2. Copy configs to this folder and modify as neccessary:
+    ```
+    wget https://github.com/zackhorvath/vrising-docker/blob/main/settings/ServerGameSettings.json -o $SETTINGS/ServerGameSettings.json
+    wget https://github.com/zackhorvath/vrising-docker/blob/main/settings/ServerHostSettings.json -o $SETTINGS/ServerHostSettings.json
+    ```
+3. Modify `docker-compose.yml` as neccessary, ensuring the volume mapping matches the directory you just created.
+4. Launch docker-compose with `docker-compose up -d`
 

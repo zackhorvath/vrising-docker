@@ -12,7 +12,7 @@
   "ListOnMasterServer": true,
   "AutoSaveCount": 50,
   "AutoSaveInterval": 300,
-  "GameSettingsPreset": "StandardPvE",
+  "GameSettingsPreset": "",
   "AdminOnlyDebugEvents": true,
   "DisableDebugEvents": false
 }
