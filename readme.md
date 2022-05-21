@@ -16,7 +16,9 @@ This is a quick deployment meant to get you up and running with minimal BS:
 1. Create your host's game settings folder:
     ```
     export SETTINGS=/vrising/settings
+    export SAVES=/vrising/saves
     mkdir $SETTINGS
+    mkdir $SAVES
     ```
 2. Copy configs to this folder and modify as neccessary:
     ```
