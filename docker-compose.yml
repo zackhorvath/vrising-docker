@@ -1,8 +1,8 @@
-version: "2.1"
+version: "3.8"
 services: 
   vrising:
     container_name: vrising-server
-    image: vrising:latest
+    image: ghcr.io/zackhorvath/vrising-docker:latest
     volumes: 
       - /vrising/saves:/root/.wine/drive_c/users/root/AppData/LocalLow/Stunlock Studios/VRisingServer/Saves
       - /vrising/settings:/root/.wine/drive_c/users/root/AppData/LocalLow/Stunlock Studios/VRisingServer/Settings/

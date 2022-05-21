@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+LABEL org.opencontainers.image.source https://github.com/zackhorvath/vrising-docker
 
 RUN dpkg --add-architecture i386 \
     && apt update \
