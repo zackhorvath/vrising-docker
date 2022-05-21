@@ -22,8 +22,8 @@ This is a quick deployment meant to get you up and running with minimal BS:
     ```
 2. Copy configs to this folder and modify as neccessary:
     ```
-    wget https://github.com/zackhorvath/vrising-docker/blob/main/settings/ServerGameSettings.json -o $SETTINGS/ServerGameSettings.json
-    wget https://github.com/zackhorvath/vrising-docker/blob/main/settings/ServerHostSettings.json -o $SETTINGS/ServerHostSettings.json
+    wget https://raw.githubusercontent.com/zackhorvath/vrising-docker/main/settings/ServerGameSettings.json -o $SETTINGS/ServerGameSettings.json
+    wget https://raw.githubusercontent.com/zackhorvath/vrising-docker/main/settings/ServerHostSettings.json -o $SETTINGS/ServerHostSettings.json
     ```
 3. Modify `docker-compose.yml` as neccessary, ensuring the volume mapping matches the directory you just created.
 4. Launch docker-compose with `docker-compose up -d`
