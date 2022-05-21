@@ -28,3 +28,6 @@ This is a quick deployment meant to get you up and running with minimal BS:
 3. Modify `docker-compose.yml` as neccessary, ensuring the volume mapping matches the directory you just created.
 4. Launch docker-compose with `docker-compose up -d`
 
+## Known Issues!
+* The container is pretty large for what it is, it'll need to be optimized
+* End goal is to be able to use environment vars provided to docker-compose to generate server configs
